@@ -1,0 +1,3 @@
+C:/Users/tolun/Documents/GitHub/Graph-Coloring/cmake-build-debug/CMakeFiles/Graph_Coloring.dir
+C:/Users/tolun/Documents/GitHub/Graph-Coloring/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tolun/Documents/GitHub/Graph-Coloring/cmake-build-debug/CMakeFiles/rebuild_cache.dir
