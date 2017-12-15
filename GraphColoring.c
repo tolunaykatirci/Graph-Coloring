@@ -131,19 +131,49 @@ Periods * newPeriod(char *name){
 
 void depthFirstSearch(Graph *graph, AdjCourse *vertex, char *colors[]){
     //AdjCourse *vertex=graph->vertices;
-
     Courses *courses=vertex->vRelated;
+
+    /*
+     *      HOCAYA SOR!
+     *  GRAPH OLUŞTURDUKTAN SONRA GRAPHE BAĞLI OLMAYAN
+     *  VERTEX VARSA ONLARI DA COLORINGE EKLEYECEK MİYİZ?
+     *
+     *  EĞER EKLEYECEKSEK DFS MANTIĞI NASIL OLACAK?
+     *  NE ZAMAN ORAYA GEÇECEK?
+     *
+     */
     if(vertex!=NULL){
         if(vertex->isVisited==0){
+
+            char *renkler="color";
+            char renk[10];
+            char number[4];
+
             vertex->isVisited=1;
             int i=0;
-            while(i<5){
-                if(!hasColor(graph,vertex->vRelated,colors[i])){
-                    vertex->color=colors[i];
+            strcpy(renk,renkler);
+            itoa(i,number,10);
+            strcat(renk,number);
+            while(hasColor(graph,vertex->vRelated, renk)/*i<100*/){
+                /*strcpy(renk,renkler);
+                itoa(i,number,10);
+                strcat(renk,number);*/
+                //printf("%s",renk);
+                /*if(!hasColor(graph,vertex->vRelated, renk)){
+                    vertex->color=renk;
                     break;
-                }
+                }*/
                 i++;
+                strcpy(renk,renkler);
+                itoa(i,number,10);
+                strcat(renk,number);
             }
+            printf("%s\n",renk);
+            //vertex->color=renk;
+
+            vertex->color=(char *)malloc(sizeof(char)*10);
+            strcpy(vertex->color,renk);
+
             while (courses!=NULL){
                 depthFirstSearch(graph,findVertex(graph,courses->name),colors);
                 courses=courses->next;

@@ -1,5 +1,7 @@
 Ayse Kara : MATH101, CSE100, MATH259
-Efe Anil: BLAW203, MATH101
+Efe Anil: BLAW203, DENEME, MATH101
 Suat Ali Barut :STAT253, MATH259
 Nil Girgin : MATH259, HIST111,STAT253
-Tolunay : asd, asdasd,HIST111,MATH259
+Tolu: ders1
+hakki: ders3,ders2
+furkan: ders3

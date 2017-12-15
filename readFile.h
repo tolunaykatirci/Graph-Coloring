@@ -13,7 +13,7 @@ typedef struct Courses Courses;
 
 struct Students{
     char name[50];
-    struct Courses *courses;
+    Courses *courses;
     struct Students *next;
 };
 typedef struct Students Students;
@@ -27,5 +27,6 @@ Students * findStudent(Students *head, char *name);
 char * startCheck(char *word);
 char * endCheck(char *word);
 Courses * newCourse(char *name);
+Students * newStudent(char *name);
 
 #endif //CSE225PROJECT3_READFILE_H

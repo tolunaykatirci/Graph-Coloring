@@ -113,11 +113,15 @@ void printGraph(Graph *graph){
     while(vertex!=NULL){
         edge=vertex->vRelated;
         printf("%s->",vertex->head);
-        while (edge->next!=NULL){
-            printf("%s-",edge->name);
+        while(edge!=NULL){
+            printf("%s",edge->name);
+            if(edge->next!=NULL){
+                printf("-");
+            }
             edge=edge->next;
         }
-        printf("%s\n",edge->name);
+        printf("\n");
+
         vertex=vertex->next;
     }
 }

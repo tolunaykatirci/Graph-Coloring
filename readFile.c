@@ -19,7 +19,34 @@ Students * readFile(char *filename){
 }
 
 Students * addStudent(Students *head, char *name){
-    if(head==NULL){
+    Students *p, *q, *r;
+    p = newStudent(name);
+
+    if (head == NULL) {
+        return p;
+    }
+    else {
+        q = head;
+        while (q != NULL && strcmp(q->name, p->name) == -1) {
+            r = q;
+            q = q->next;
+        }
+        if (q != NULL && strcmp(q->name, p->name) == 0) {
+            //printf("existent");
+            return head;
+        }
+        if (q != NULL) {
+            p->next = q;
+        }
+        if (q == head) {
+            head = p;
+        } else {
+            r->next = p;
+        }
+    }
+    return head;
+
+    /*if(head==NULL){
         Students *newstd = (Students *)malloc(sizeof(Students));
         strcpy(newstd->name,name);
         newstd->courses=NULL;
@@ -42,7 +69,7 @@ Students * addStudent(Students *head, char *name){
         newstd->next=NULL;
         current->next=newstd;
         return head;
-    }
+    }*/
 }
 
 Courses * addCourse(Courses *head, char *name){
@@ -76,6 +103,14 @@ Courses * addCourse(Courses *head, char *name){
 Courses * newCourse(char *name){
     Courses *newstd = (Courses *)malloc(sizeof(Courses));
     strcpy(newstd->name,name);
+    newstd->next=NULL;
+    return newstd;
+}
+
+Students * newStudent(char *name){
+    Students *newstd = (Students *)malloc(sizeof(Students));
+    strcpy(newstd->name,name);
+    newstd->courses=NULL;
     newstd->next=NULL;
     return newstd;
 }
