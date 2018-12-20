@@ -35,7 +35,7 @@ Graph * createGraph(Students *students){
 AdjCourse * newVertex(char *name){
     AdjCourse *new = (AdjCourse*) malloc(sizeof(AdjCourse));
     strcpy(new->head,name);
-    new->color="white";
+    new->color="colorless";
     new->isVisited=0;
     new->vRelated=NULL;
     new->next=NULL;
@@ -109,6 +109,9 @@ Courses * findInRelated(AdjCourse *source, char *name){
 void printGraph(Graph *graph){
     AdjCourse *vertex=graph->vertices;
     Courses *edge;
+    printf(" Adjacency List of Graph\n");
+    print(196,28);
+    printf("\n");
 
     while(vertex!=NULL){
         edge=vertex->vRelated;

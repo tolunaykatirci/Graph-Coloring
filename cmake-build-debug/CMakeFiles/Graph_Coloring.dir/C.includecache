@@ -39,14 +39,10 @@ C:/Users/tolun/Documents/GitHub/Graph-Coloring/Graph.h
 C:/Users/tolun/Documents/GitHub/Graph-Coloring/main.c
 stdio.h
 -
-stdlib.h
--
 Graph.h
 C:/Users/tolun/Documents/GitHub/Graph-Coloring/Graph.h
 GraphColoring.h
 C:/Users/tolun/Documents/GitHub/Graph-Coloring/GraphColoring.h
-readFile.h
-C:/Users/tolun/Documents/GitHub/Graph-Coloring/readFile.h
 
 C:/Users/tolun/Documents/GitHub/Graph-Coloring/readFile.c
 stdio.h

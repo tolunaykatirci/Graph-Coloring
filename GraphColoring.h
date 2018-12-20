@@ -16,12 +16,12 @@ struct Periods{
 typedef struct Periods Periods;
 
 int hasColor(Graph *graph, Courses *courses, char *color);
-void depthFirstSearch(Graph *graph, AdjCourse *vertex, char *colors[]);
+void depthFirstSearch(Graph *graph, AdjCourse *vertex);
 void printColors(Graph *graph);
 Periods * findPeriodWithColor(Periods *head, char *color);
 Periods * findPeriodWithName(Periods *head, char *name);
 Periods * addPeriod(Periods *head, char *name);
-Graph * colorGraph(char *colors[]);
+Graph * colorGraph(Graph *graph);
 Periods * createPeriods(Graph *graph);
 void printPeriods(Periods *head);
 Periods * newPeriod(char *name);

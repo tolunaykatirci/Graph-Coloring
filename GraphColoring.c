@@ -5,22 +5,15 @@
 #include <stdlib.h>
 #include <mem.h>
 
-Graph * colorGraph(char *colors[]){
+Graph * colorGraph(Graph *graph){
 
-    Students *students=readFile("StudentList.txt");
-    printStudents(students);
-    printf("\n");
-
-    Graph *graph = createGraph(students);
-    printGraph(graph);
-    printf("\n");
-
-    depthFirstSearch(graph,graph->vertices, colors);
-    printColors(graph);
-    printf("\n");
+    AdjCourse *temp=graph->vertices;
+    while(temp!=NULL){
+        depthFirstSearch(graph,temp);
+        temp=temp->next;
+    }
 
     return graph;
-
 }
 
 Periods * createPeriods(Graph *graph){
@@ -129,19 +122,9 @@ Periods * newPeriod(char *name){
     return new;
 }
 
-void depthFirstSearch(Graph *graph, AdjCourse *vertex, char *colors[]){
-    //AdjCourse *vertex=graph->vertices;
+void depthFirstSearch(Graph *graph, AdjCourse *vertex){
     Courses *courses=vertex->vRelated;
 
-    /*
-     *      HOCAYA SOR!
-     *  GRAPH OLUŞTURDUKTAN SONRA GRAPHE BAĞLI OLMAYAN
-     *  VERTEX VARSA ONLARI DA COLORINGE EKLEYECEK MİYİZ?
-     *
-     *  EĞER EKLEYECEKSEK DFS MANTIĞI NASIL OLACAK?
-     *  NE ZAMAN ORAYA GEÇECEK?
-     *
-     */
     if(vertex!=NULL){
         if(vertex->isVisited==0){
 
@@ -154,28 +137,18 @@ void depthFirstSearch(Graph *graph, AdjCourse *vertex, char *colors[]){
             strcpy(renk,renkler);
             itoa(i,number,10);
             strcat(renk,number);
-            while(hasColor(graph,vertex->vRelated, renk)/*i<100*/){
-                /*strcpy(renk,renkler);
-                itoa(i,number,10);
-                strcat(renk,number);*/
-                //printf("%s",renk);
-                /*if(!hasColor(graph,vertex->vRelated, renk)){
-                    vertex->color=renk;
-                    break;
-                }*/
+            while(hasColor(graph,vertex->vRelated, renk)){
                 i++;
                 strcpy(renk,renkler);
                 itoa(i,number,10);
                 strcat(renk,number);
             }
-            printf("%s\n",renk);
-            //vertex->color=renk;
 
             vertex->color=(char *)malloc(sizeof(char)*10);
             strcpy(vertex->color,renk);
 
             while (courses!=NULL){
-                depthFirstSearch(graph,findVertex(graph,courses->name),colors);
+                depthFirstSearch(graph,findVertex(graph,courses->name));
                 courses=courses->next;
             }
 
@@ -200,6 +173,9 @@ int hasColor(Graph *graph, Courses *courses, char *color){
 
 void printColors(Graph *graph){
     AdjCourse *temp = graph->vertices;
+    printf(" Colors of Courses\n");
+    print(196,19);
+    printf("\n");
     while (temp!=NULL){
         printf("%s = %s\n",temp->head,temp->color);
         temp=temp->next;

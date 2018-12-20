@@ -117,8 +117,13 @@ Students * newStudent(char *name){
 void printStudents(Students *headS){
     Students *currentS=headS;
     Courses *currentC;
+    printf(" Students\t  Courses\n");
+    print(196,16);
+    printf(" ");
+    print(196,16);
+    printf("\n");
     while(currentS!=NULL){
-        printf("%s:",currentS->name);
+        printf("%s\t",currentS->name);
         currentC=currentS->courses;
         while (currentC->next!=NULL){
             printf("%s,",currentC->name);
@@ -127,6 +132,18 @@ void printStudents(Students *headS){
         printf("%s\n",currentC->name);
         currentS=currentS->next;
     }
+}
+
+int findLongestStudentName(Students *students){
+    int i=0;
+    Students *temp = students;
+    while(temp!=NULL){
+        if(strlen(temp->name)>i){
+            i=strlen(temp->name);
+        }
+        temp=temp->next;
+    }
+    return i;
 }
 
 Students * createStudentNode(Students *head, char *dataline){
@@ -181,4 +198,11 @@ char * endCheck(char *word){
         return (endCheck(word));
     }
     return word;
+}
+
+void print(char c,int i){
+    while(i>0){
+        printf("%c",c);
+        i--;
+    }
 }

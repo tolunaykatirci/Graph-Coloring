@@ -1,7 +1,3 @@
-//
-// Created by tolun on 03.12.2017.
-//
-
 #ifndef CSE225PROJECT3_READFILE_H
 #define CSE225PROJECT3_READFILE_H
 
@@ -28,5 +24,7 @@ char * startCheck(char *word);
 char * endCheck(char *word);
 Courses * newCourse(char *name);
 Students * newStudent(char *name);
+int findLongestStudentName(Students *students);
+void print(char c,int i);
 
 #endif //CSE225PROJECT3_READFILE_H
